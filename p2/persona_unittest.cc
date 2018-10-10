@@ -67,6 +67,7 @@ TEST(Persona, OperadorIgualDefecto) {
   Persona p("44XX", "Carlos", "Gutierrez", 30, "C/ Mesa 1", "Aguilar", "Sevilla", "España");
   Persona q("66FF");
   q=p;
+  
   EXPECT_EQ("44XX", q.getDNI());
   EXPECT_EQ("Carlos", q.getNombre());
   EXPECT_EQ("Gutierrez", q.getApellidos());
@@ -82,6 +83,7 @@ TEST(Persona, OperadorIgualDefecto) {
   
   EXPECT_EQ(true, p.mayor());
   EXPECT_FALSE(p.setEdad(-5));
+
   EXPECT_TRUE(p.setEdad(5));
   EXPECT_EQ(false, p.mayor());
   

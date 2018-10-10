@@ -51,4 +51,22 @@ public:
 
 };
 
+class Crupier : public Persona{
+
+private:
+	string cod_;
+public:
+	Crupier(string dni,string codigo,string nombre="",string apel="",int edad=0,string dir ="",string loc="",string prov="",string pais ="");
+
+	inline string getCodigo(){return (cod_);}
+	
+	inline void setCodigo(string cod){cod_=cod;}
+
+};
+
+
+
 #endif
+
+
+
