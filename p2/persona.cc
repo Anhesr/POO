@@ -5,7 +5,6 @@
 	Persona :: Persona(std :: string dni,std :: string nombre,std :: string apel,int edad,std :: string dir,std :: string loc,std :: string prov,std :: string pais ){
 
 		dni_=dni;
-		std :: cout<< dni_<< std :: endl;
 		nom_=nombre;
 		apel_=apel;
 		edad_=edad;
@@ -17,8 +16,8 @@
 	}
 
 	bool Persona :: setEdad(int ed){
-		edad_=ed;
-		if(ed>=18){
+		if(ed>=0){
+			edad_=ed;
 			return(true);
 		}
 		else{return(false);}
@@ -86,7 +85,7 @@
 	}
 
 	std :: string Persona :: getApellidosyNombre(){
-		return (apel_+nom_);
+		return (apel_+", "+nom_);
 	}
 	
 	bool Persona :: mayor(){
