@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "persona.h"
+#include "crupier.h"
+#include "jugador.h"
 
 int main(){
 	std :: string a="hola";
