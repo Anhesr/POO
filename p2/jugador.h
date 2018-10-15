@@ -20,7 +20,7 @@ public:
 	inline void setCodigo(string cod){codj_=cod;};
 	inline int getDinero(){return dinero_;};
 	inline void setDinero(int dinero){dinero_=dinero;};
-	list <apuestas> getApuestas(){return(apuesta);};
+	inline list <apuestas> getApuestas(){return(apuesta_);};
 	void setApuestas();
 };
 
