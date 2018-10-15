@@ -60,12 +60,15 @@ TEST(Jugador, setCodigoygetCodigo) {
   EXPECT_EQ("55", j.getCodigo());
 }
 
+
 TEST(Jugador, setApuestasygetApuestasVacio) {
   Jugador j("33XX", "1");
-  list<Apuesta> l;
+  list<apuestas> l;
   l= j.getApuestas();
   EXPECT_TRUE(l.empty());
 }
+
+
 TEST(Jugador, setApuestasygetApuestas) {
   Jugador j("33XX", "1");
   string nomfich=j.getDNI()+".txt";
@@ -75,11 +78,11 @@ TEST(Jugador, setApuestasygetApuestas) {
   salida << 3 << "," << "par" << "," << 35<< "\n";
   salida << 4 << "," << "bajo" << "," << 45<< "\n";
   salida.close();
-  list<Apuesta> l;
+  list<apuestas> l;
   j.setApuestas();
   l= j.getApuestas();
   EXPECT_EQ(4, l.size());
-  list<Apuesta>::iterator i;
+  list<apuestas>::iterator i;
   i=l.begin();
   EXPECT_EQ(1, (*i).tipo);
   EXPECT_EQ("10", (*i).valor);
@@ -97,4 +100,5 @@ TEST(Jugador, setApuestasygetApuestas) {
   EXPECT_EQ("bajo", (*i).valor);
   EXPECT_EQ(45, (*i).cantidad);
 }
+
 
