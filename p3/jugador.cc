@@ -11,8 +11,8 @@ void Jugador :: setApuestas(){
 	//if(!f) std :: cout << "ERROR de apertura";
 	
 	apuestas a;
-/*
 
+/*
 	while (getline(f,line,',')){
 
 	cout << line << endl; 

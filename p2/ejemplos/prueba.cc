@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include <fstream>
 using namespace std;
 
@@ -10,27 +11,37 @@ int main(){
 
 }
 
+
 void prueba(){
 
 ofstream salida("prueba.txt");
 
 if(!salida) cout << "ERROR de apertura";
 
-salida << "10 " << "47.28 "<< " Esto es un ejemplo";
+salida << "10," << "47.28,"<< "ejemplo";
+
 
 salida.close();
 
+
 int a;
 float b;
-char cad[800];
+string cad="";
+string line="";
 
 ifstream entrada("prueba.txt");
 
 if(!entrada) cout << "ERROR de apertura";
 
-entrada >> a >> b >> cad;
+getline(entrada,line,',');
+	a=stoi(line);
 
-cout << a << b << cad << endl; 
+getline(entrada,line,',');
+	b=stof(line);
+
+getline(entrada,line,',');
+	cad=line;
+
 
 entrada.close();
 

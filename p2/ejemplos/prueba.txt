@@ -1,1 +1,1 @@
-10 47.28  Esto es un ejemplo
+10,47.28,ejemplo
