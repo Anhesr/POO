@@ -11,17 +11,16 @@ int main(){
 
 }
 
-
 void prueba(){
 
-ofstream salida("prueba.txt");
+/*ofstream salida("prueba.txt");
 
 if(!salida) cout << "ERROR de apertura";
 
 salida << "10," << "47.28,"<< "ejemplo";
 
 
-salida.close();
+salida.close();*/
 
 
 int a;
@@ -32,15 +31,6 @@ string line="";
 ifstream entrada("prueba.txt");
 
 if(!entrada) cout << "ERROR de apertura";
-
-getline(entrada,line,',');
-	a=stoi(line);
-
-getline(entrada,line,',');
-	b=stof(line);
-
-getline(entrada,line,',');
-	cad=line;
 
 
 entrada.close();

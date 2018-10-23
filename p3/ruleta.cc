@@ -8,19 +8,21 @@
 
 bool Ruleta :: addJugador(Jugador j){
 	list <Jugador>::iterator i;
-	for(i=jugadores_.begin(); i != jugadores.end(); ++i){
-		if(j.getDNI()==*i){return false;}
+	for(i=jugadores_.begin(); i != jugadores_.end(); ++i){
+		if(j.getDNI()==i->getDNI()){return false;}
 	}
 
-	jugadores.push_back(j);
+	jugadores_.push_back(j);
+
 	string n=j.getDNI()+".txt";
 
-	ifstream f(n);
+	ifstream entrada(n.c_str());
 
-	if(!f){return true;}
-	f.close();
+	if(entrada){return true;}
 
-	ofstream f(n);
+	entrada.close();
+
+	ofstream salida(n.c_str());
 	return true;
-	f.close();
+	salida.close();
 }
