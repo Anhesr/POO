@@ -55,6 +55,7 @@ TEST(Ruleta, getCrupier) {
   EXPECT_EQ("codigo1", d.getCodigo());
 }
 
+
 TEST(Ruleta, addJugador) {
   Crupier c("33XX","crupier1");
   Jugador j1("44XX","jugador1");
@@ -151,7 +152,7 @@ TEST(Ruleta, giraRuleta) {
     EXPECT_LT(r.getBola(), 37);
   }
 }
-
+/*
 TEST(Ruleta, getPremios) {
   Crupier c("33XX","crupier1");
   Jugador j1("44XX","jugador1");
@@ -215,3 +216,4 @@ TEST(Ruleta, getPremiosCero) {
   EXPECT_EQ(1000360, r.getBanca());
 }
 
+*/

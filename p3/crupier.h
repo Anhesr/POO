@@ -1,5 +1,7 @@
 #include "persona.h"
 #include <string>
+#ifndef CRUPIER_H
+#define CRUPIER_H
 using namespace std;
 
 
@@ -14,3 +16,5 @@ public:
 	inline void setCodigo(string cod){cod_=cod;};
 
 };
+
+#endif
