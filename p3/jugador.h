@@ -1,6 +1,8 @@
 #include "persona.h"
 #include <string>
 #include <list>
+#include <fstream>
+#include <stdlib.h>
 #ifndef JUGADOR_H
 #define JUGADOR_H
 using namespace std;
@@ -23,7 +25,28 @@ public:
 	inline int getDinero(){return dinero_;};
 	inline void setDinero(int dinero){dinero_=dinero;};
 	inline list <apuestas> getApuestas(){return(apuesta_);};
-	void setApuestas();
+	void setApuestas(){
+	string n=getDNI()+".txt";
+	ifstream f(n.c_str());
+
+	char line[200];
+
+		apuestas a;
+
+		while (f.getline(line,200,',')){
+			a.tipo=atoi(line);
+
+			f.getline(line,200,',');
+			a.valor=line;
+		
+			f.getline(line,200);
+			a.cantidad=atoi(line);
+
+			apuesta_.push_back(a);
+		}
+
+		f.close();
+	};
 };
 
 #endif

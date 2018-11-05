@@ -3,7 +3,8 @@
 #include <string>
 #include <fstream>
 #include <list>
-#include <stdlib.h>  
+#include <stdlib.h> 
+#include <iostream>
 #ifndef RULETA_H
 #define RULETA_H
 
@@ -128,6 +129,7 @@ public:
 
 			jugadores_.push_back(j);
 		}
+		entrada.close();
 	}
 
 	void giraRuleta(){
@@ -135,7 +137,64 @@ public:
 	}
 
 	void getPremios(){
+
+
+		list<Jugador>::iterator i; 
+
+		for(i=jugadores_.begin(); i != jugadores_.end(); ++i){
+
+			string n=i->getDNI()+".txt";
+			ifstream f(n.c_str());
+
+			char line[200];
+			list<apuestas> aux;
+			apuestas a;
+
+			while (f.getline(line,200,',')){
+				a.tipo=atoi(line);
+
+				f.getline(line,200,',');
+				a.valor=line;
 		
+				f.getline(line,200,',');
+				a.cantidad=atoi(line);
+
+				aux.push_back(a);
+			}
+			list<apuestas>::iterator k; 
+			for(k=aux.begin(); k != aux.end(); ++k){
+				switch(k->tipo){
+					case 1:
+						string nom=k->valor;
+						if(atoi(nom.c_str())==(getBola())){
+							i->setDinero((i->getDinero())+((k->cantidad)*35));
+						}
+						else{
+							i->setDinero((i->getDinero())-(k->cantidad));
+						}
+						break;
+					case 2:
+						int rojo[18]={1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
+						if(getBola()==0){
+							i->setDinero((i->getDinero())-(k->cantidad));
+						}
+						for(int l=0;l<18;i++){
+							if((getBola()==rojo[i])&&(k->valor="rojo")){
+								i->setDinero((i->getDinero())+((k->cantidad)*2));
+								break;
+							}
+						}
+						if(k->valor=="negro"){
+
+						}
+					case 3:
+					case 4:
+
+				}
+			}
+
+			f.close();
+		}
 	}
 };
 
