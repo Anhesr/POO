@@ -152,40 +152,41 @@ TEST(Ruleta, giraRuleta) {
     EXPECT_LT(r.getBola(), 37);
   }
 }
-/*
+
 TEST(Ruleta, getPremios) {
   Crupier c("33XX","crupier1");
   Jugador j1("44XX","jugador1");
-  Jugador j2("55XX","jugador2");
+  //Jugador j2("55XX","jugador2");
   Ruleta r(c);
   r.addJugador(j1);
-  r.addJugador(j2);
+  //r.addJugador(j2);
 
   ofstream salida("44XX.txt");
-  salida << 1 << "," << "10" << "," << 15<< "\n";
+  //salida << 1 << "," << "3" << "," << 15<< "\n";
   salida << 2 << "," << "rojo" << "," << 25<< "\n";
-  salida << 3 << "," << "par" << "," << 35<< "\n";
-  salida << 4 << "," << "bajo" << "," << 45<< "\n";
+  //salida << 3 << "," << "par" << "," << 35<< "\n";
+  //salida << 4 << "," << "bajo" << "," << 45<< "\n";
   salida.close();
 
-  salida.open("55XX.txt");
+  /*salida.open("55XX.txt");
   salida << 2 << "," << "rojo" << "," << 15<< "\n";
   salida << 1 << "," << "15" << "," << 25<< "\n";
   salida << 4 << "," << "alto" << "," << 35<< "\n";
   salida << 3 << "," << "impar" << "," << 45<< "\n";
-  salida.close();
+  salida.close();*/
 
-  r.setBola(10); // negro, par, bajo
+  r.setBola(0); // negro, par, bajo
   r.getPremios();
-  //44XX -> 1000 + 15*35 - 25 + 35 + 45 = 1580 
+  //44XX -> 1000 + 15*35 - 25 - 35 + 45 = 1580 
   //55XX -> 1000 - 15 - 25 - 35 - 45 = 880
   //banca_ = banca_ - 580 + 120 = 999540
-  EXPECT_EQ(1580, r.getJugadores().begin()->getDinero());
+  /*EXPECT_EQ(1580, r.getJugadores().begin()->getDinero());
   EXPECT_EQ(880, (++r.getJugadores().begin())->getDinero());
-  EXPECT_EQ(999540, r.getBanca());
+  EXPECT_EQ(999540, r.getBanca());*/
+  EXPECT_EQ(1500,r.getJugadores().begin()->getDinero());
 }
 
-TEST(Ruleta, getPremiosCero) {
+/*TEST(Ruleta, getPremiosCero) {
   Crupier c("33XX","crupier1");
   Jugador j1("44XX","jugador1");
   Jugador j2("55XX","jugador2");
@@ -214,6 +215,5 @@ TEST(Ruleta, getPremiosCero) {
   EXPECT_EQ(900, r.getJugadores().begin()->getDinero());
   EXPECT_EQ(740, (++r.getJugadores().begin())->getDinero());
   EXPECT_EQ(1000360, r.getBanca());
-}
+}*/
 
-*/
