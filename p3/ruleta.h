@@ -140,7 +140,9 @@ public:
 
 
 		list<Jugador>::iterator i; 
-
+		string nom;
+		int par[18]={2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36};
+		int rojo[18]={1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
 		for(i=jugadores_.begin(); i != jugadores_.end(); ++i){
 
 			string n=i->getDNI()+".txt";
@@ -156,40 +158,113 @@ public:
 				f.getline(line,200,',');
 				a.valor=line;
 		
-				f.getline(line,200,',');
+				f.getline(line,200);
 				a.cantidad=atoi(line);
 
 				aux.push_back(a);
 			}
+
 			list<apuestas>::iterator k; 
 			for(k=aux.begin(); k != aux.end(); ++k){
 				switch(k->tipo){
+
 					case 1:
-						string nom=k->valor;
+						nom=k->valor;
 						if(atoi(nom.c_str())==(getBola())){
 							i->setDinero((i->getDinero())+((k->cantidad)*35));
+							setBanca(getBanca()-(k->cantidad*35));
 						}
 						else{
 							i->setDinero((i->getDinero())-(k->cantidad));
+							setBanca(getBanca()+(k->cantidad));
 						}
 						break;
+
+
 					case 2:
-						int rojo[18]={1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
+
+						if((k->valor) == "rojo"){
+							for(int i=0;i<18;i++){
+								if(getBola()==rojo[i]){
+								i- > setDinero((i->getDinero())+(k->cantidad));
+								setBanca(getBanca()-(k->cantidad));
+								break;									
+								}
+							}
+						}
+
+
 						if(getBola()==0){
 							i->setDinero((i->getDinero())-(k->cantidad));
+							setBanca(getBanca()+(k->cantidad));
+							break;
 						}
-						for(int l=0;l<18;i++){
-							if((getBola()==rojo[i])&&(k->valor="rojo")){
-								i->setDinero((i->getDinero())+((k->cantidad)*2));
+
+
+						if(k->valor=="negro"){
+							i->setDinero((i->getDinero())+(k->cantidad));
+							setBanca(getBanca()-(k->cantidad));
+							break;
+						}
+
+						else{
+							i->setDinero((i->getDinero())-(k->cantidad));
+							setBanca(getBanca()+(k->cantidad));
+						}
+						break;
+
+					case 3:
+
+
+						if(getBola()==0){
+							i->setDinero((i->getDinero())-(k->cantidad));
+							setBanca(getBanca()+(k->cantidad));
+							break;
+						}
+
+						for(int l=0;l<18;l++){
+							if((getBola() == par[l])&&(k->valor=="par")){
+								cout<< i->getDinero() <<endl;
+								i->setDinero((i->getDinero())+(k->cantidad));
+								setBanca(getBanca()-(k->cantidad));
+								cout<< i->getDinero() <<endl;
 								break;
 							}
 						}
-						if(k->valor=="negro"){
 
+						if(k->valor=="impar"){
+							i->setDinero((i->getDinero())+(k->cantidad));
+							setBanca(getBanca()-(k->cantidad));
+							break;
 						}
-					case 3:
-					case 4:
+						else{
+							i->setDinero((i->getDinero())-(k->cantidad));
+							setBanca(getBanca()+(k->cantidad));							
+						}
+						break;
 
+
+					case 4:
+						if(getBola()==0){
+							i->setDinero((i->getDinero())-(k->cantidad));
+							setBanca(getBanca()+(k->cantidad));
+						}
+
+						if((getBola()<= 18)&&(k->valor == "bajo")){
+							i->setDinero((i->getDinero())+(k->cantidad));
+							setBanca(getBanca()-(k->cantidad));
+							break;							
+						}
+						if((getBola()>= 19)&&(k->valor == "alto")){
+							i->setDinero((i->getDinero())+(k->cantidad));
+							setBanca(getBanca()-(k->cantidad));
+							break;							
+						}
+						else{
+							i->setDinero((i->getDinero())-(k->cantidad));
+							setBanca(getBanca()+(k->cantidad));
+						}
+						break;
 				}
 			}
 
