@@ -144,7 +144,7 @@ TEST(Contador, DecrementoPrefijo3) {
   --c;
   EXPECT_EQ(10, c.get());
 }
-/*
+
 TEST(Contador, Undo1) {
   Contador c;
   EXPECT_FALSE(c.undo());
@@ -154,7 +154,7 @@ TEST(Contador, Undo1) {
   EXPECT_TRUE(c.undo());
   EXPECT_EQ(0, c.get());
 }
-
+/*
 TEST(Contador, Undo2) {
   Contador c;
   EXPECT_FALSE(c.undo(-1));
@@ -303,7 +303,7 @@ TEST(Contador, Resta5) {
   Contador c(10000,1,1000000), d(10000,1,1000000);
   c=d-5555;
   EXPECT_EQ(4445, c.get());
-  c=1-d;
+  c=9999-d;
   EXPECT_EQ(1, c.get());
 }
 
